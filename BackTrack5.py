@@ -17,20 +17,20 @@ class Solution(object):
             result.append(str)
             return
         digit=int(digits[index])
-        letters=self.letterMap[digit]
-        for i in range(len(letters)):
-            str+=letters[i]
+        for i in self.letterMap[digit]:
+            str+=i
             self.backtracking(digits, index+1, result,str)
             str=str[:-1]
+
+
 
     def letterCombinations(self, digits):
         """
         :type digits: str
         :rtype: List[str]
         """
-        result = []
-        if len(digits)==0:
+        result=[]
+        if len(digits) == 0:
             return result
-
         self.backtracking(digits,0,result,"")
         return result
