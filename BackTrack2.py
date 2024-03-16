@@ -18,4 +18,3 @@ class Solution(object):
         result=[]
         self.backtrack(n, k, 1, [],result)
         return result
-
