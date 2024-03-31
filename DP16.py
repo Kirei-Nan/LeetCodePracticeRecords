@@ -1,20 +1,19 @@
-# Definition for singly-linked list.
-class ListNode(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
 class Solution(object):
-    def removeElements(self, head, val):
+    def findTargetSumWays(self, nums, target):
         """
-        :type head: ListNode
-        :type val: int
-        :rtype: ListNode
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
         """
-        newhead=ListNode(0,head)
-        cur=newhead
-        while cur.next:
-            if cur.next.val==val:
-                cur.next=cur.next.next
-            else:
-                cur=cur.next
-        return newhead.next
+        total_sum=sum(nums)
+        if target>total_sum:
+            return 0
+        if (total_sum+target)%2==1:
+            return 0
+        target_sum=(total_sum+target)//2
+        dp=[0]*(target_sum+1)
+        dp[0]=1
+        for num in nums:
+            for j in range(target_sum,num-1,-1):
+                dp[j]+=dp[j-num]
+        return dp[-1]
