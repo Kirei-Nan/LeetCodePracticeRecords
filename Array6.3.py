@@ -5,6 +5,7 @@ class Solution:
         result=[[0]*n for _ in range(n)]
         mid=n//2
 
+
         for offset in range(n//2):
             for i in range(starty,n-offset-1):
                 result[startx][i] =count
