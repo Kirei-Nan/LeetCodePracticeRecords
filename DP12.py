@@ -29,6 +29,7 @@ class Solution:
                     dp[j]=max(dp[j],dp[j-weights[i]]+values[i])
         return dp[-1]
 
+
 solution=Solution()
 n,capacity,weights,values=solution.getinput()
 print(solution.dp1(n,capacity,weights,values))
